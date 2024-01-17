@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live TV Channels</title>
+
+    <!-- Include DPlayer CSS file -->
+    <link rel="stylesheet" href="path/to/DPlayer.min.css">
+
+    <!-- Replace 'path/to/your/logo.png' with the actual path to your logo image -->
+    <style>
+        /* Add styles for the logo */
+        #logo {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Logo section -->
+    <div id="logo">
+        <img src="path/to/your/logo.png" alt="Your Logo">
+    </div>
+
+    <!-- Video player section -->
+    <div id="dplayer"></div>
+
+    <!-- Disqus comments section -->
+    <div id="disqus_thread"></div>
+
+    <!-- Include DPlayer JavaScript file -->
+    <script src="path/to/DPlayer.min.js"></script>
+
+    <!-- Include Disqus script -->
+    <script>
+        /**
+         * Replace 'your_disqus_shortname' with your actual Disqus shortname.
+         * You can obtain the shortname when you create a Disqus account and set up a new site.
+         */
+        var disqus_shortname = 'your_disqus_shortname';
+
+        /**
+         * Replace 'your_page_identifier' with a unique identifier for this page.
+         * It could be the page URL or any string that identifies this page for Disqus.
+         */
+        var disqus_identifier = 'your_page_identifier';
+
+        /**
+         * Include Disqus script
+         */
+        (function () {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+    <!-- Initialize DPlayer -->
+    <script>
+        // Replace 'your_hls_stream_url' with the actual HLS stream URL
+        const dp = new DPlayer({
+            container: document.getElementById('dplayer'),
+            video: {
+                url: 'https://s.vdo.ai/vhs/1.m3u8',
+                type: 'hls',
+            },
+            // Add other DPlayer options as needed
+        });
+    </script>
+</body>
+
+</html>
