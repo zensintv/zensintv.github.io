@@ -1,78 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Thunderous Single Octopus</title>
+    <title>Your Live TV Page</title>
+    <meta property="og:title" content="Thunderous Single Octopus" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live TV Channels</title>
-
-    <!-- Include DPlayer CSS file -->
-    <link rel="stylesheet" href="path/to/DPlayer.min.css">
-
-    <!-- Replace 'path/to/your/logo.png' with the actual path to your logo image -->
-    <style>
-        /* Add styles for the logo */
-        #logo {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
     </style>
-</head>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
 
-<body>
-    <!-- Logo section -->
-    <div id="logo">
-        <img src="path/to/your/logo.png" alt="Your Logo">
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/animate.css@4.1.1/animate.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
+    />
+  </head>
+  <body>
+    <link rel="stylesheet" href="./style.css" />
+    <div>
+      <link href="./index.css" rel="stylesheet" />
+
+      <div class="home-container">
+        <header data-role="Accordion" class="home-header">
+          <img
+            alt="logo"
+            src="public/external/20240109_124329-200h.png"
+            class="home-image"
+          />
+          <div class="home-separator"></div>
+        </header>
+        <div class="home-container1">
+          <div class="home-container2">
+            <!-- Include DPlayer CSS file -->
+            <link
+              rel="stylesheet"
+              href="https://cdn.jsdelivr.net/npm/dplayer@1.25.0/dist/DPlayer.min.css"
+            />
+
+            <!-- DPlayer container -->
+            <div id="dplayer"></div>
+
+            <!-- Include DPlayer JavaScript file -->
+            <script src="https://cdn.jsdelivr.net/npm/dplayer@1.25.0/dist/DPlayer.min.js"></script>
+
+            <!-- Initialize DPlayer -->
+            <script>
+              const dp = new DPlayer({
+                  container: document.getElementById('dplayer'),
+                  video: {
+                      url: 'http://n1.klowdtv.net/live1/smc_720p/playlist.m3u8',
+                      type: 'hls',
+                  },
+                  // Add other DPlayer options as needed
+              });
+            </script>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <!-- Video player section -->
-    <div id="dplayer"></div>
-
-    <!-- Disqus comments section -->
-    <div id="disqus_thread"></div>
-
-    <!-- Include DPlayer JavaScript file -->
-    <script src="path/to/DPlayer.min.js"></script>
-
-    <!-- Include Disqus script -->
-    <script>
-        /**
-         * Replace 'your_disqus_shortname' with your actual Disqus shortname.
-         * You can obtain the shortname when you create a Disqus account and set up a new site.
-         */
-        var disqus_shortname = 'your_disqus_shortname';
-
-        /**
-         * Replace 'your_page_identifier' with a unique identifier for this page.
-         * It could be the page URL or any string that identifies this page for Disqus.
-         */
-        var disqus_identifier = 'your_page_identifier';
-
-        /**
-         * Include Disqus script
-         */
-        (function () {
-            var d = document, s = d.createElement('script');
-            s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-    </script>
-
-    <!-- Initialize DPlayer -->
-    <script>
-        // Replace 'your_hls_stream_url' with the actual HLS stream URL
-        const dp = new DPlayer({
-            container: document.getElementById('dplayer'),
-            video: {
-                url: 'https://s.vdo.ai/vhs/1.m3u8',
-                type: 'hls',
-            },
-            // Add other DPlayer options as needed
-        });
-    </script>
-</body>
-
+  </body>
 </html>
